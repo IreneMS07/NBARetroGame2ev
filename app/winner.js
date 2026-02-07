@@ -10,7 +10,7 @@ export default function WinnerScreen() {
   const hScore = parseInt(params.homeScore);
   const vScore = parseInt(params.visitorScore);
 
-  // Obtenemos los puntos de los jugadores (vienen como string JSON)
+  // Obtenemos los puntos de los jugadores
   let pScores = {};
   if (params.playerScores) {
     pScores = JSON.parse(params.playerScores);
@@ -28,7 +28,7 @@ export default function WinnerScreen() {
   else if (vScore > hScore) winner = vTeam;
 
   function renderTopPlayers(team) {
-    // Preparamos una lista de jugadores con sus puntos para poder ordenar
+    // lista de jugadores con sus puntos para poder ordenar
     var playersWithPoints = [];
     for (var i = 0; i < team.players.length; i++) {
       var name = team.players[i];
@@ -36,12 +36,12 @@ export default function WinnerScreen() {
       playersWithPoints.push({ name: name, points: points });
     }
 
-    // Ordenamos de mayor a menor puntuación sin usar flechas
+    
     playersWithPoints.sort(function (a, b) {
       return b.points - a.points;
     });
 
-    // Filtramos para que solo aparezcan los 5 mejores
+    // Filtros  solo aparecen los 5 mejores
     var top5 = playersWithPoints.slice(0, 5);
 
     return (
@@ -99,7 +99,7 @@ export default function WinnerScreen() {
   );
 }
 
-// AQUÍ ESTABA EL FALLO: Asegúrate de que esta sección empiece así
+
 const styles = StyleSheet.create({
   safeArea: { flex: 1, backgroundColor: '#000' },
   scrollContainer: { alignItems: 'center', paddingVertical: 30 },
